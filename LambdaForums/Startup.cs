@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using LambdaForums.Data;
 using LambdaForums.Models;
 using LambdaForums.Services;
+using LambdaForums.Data.Interfaces;
 
 namespace LambdaForums
 {
@@ -35,6 +36,7 @@ namespace LambdaForums
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddScoped<IForum, ForumService>();
 
             services.AddMvc();
         }
