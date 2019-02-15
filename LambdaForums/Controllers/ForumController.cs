@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using LambdaForums.Data.Interfaces;
 using LambdaForums.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +10,7 @@ namespace LambdaForums.Controllers
     public class ForumController : Controller
     {
         private readonly IForum _forumService;
+        private readonly Ipost _postService;
 
         public ForumController(IForum forumService)
         {
@@ -40,6 +38,9 @@ namespace LambdaForums.Controllers
         public IActionResult Topic(int id)
         {
             var forum = _forumService.GetById(id);
+            var posts = _postService.GetFilteredPosts(id);
+
+            var postListings = 
 
         }
     }
