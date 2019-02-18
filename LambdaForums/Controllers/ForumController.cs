@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using LambdaForums.Data.Interfaces;
 using LambdaForums.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ namespace LambdaForums.Controllers
     public class ForumController : Controller
     {
         private readonly IForum _forumService;
-        private readonly Ipost _postService;
+        private readonly IPost _postService;
 
         public ForumController(IForum forumService)
         {
@@ -38,10 +39,33 @@ namespace LambdaForums.Controllers
         public IActionResult Topic(int id)
         {
             var forum = _forumService.GetById(id);
-            var posts = _postService.GetFilteredPosts(id);
+            var posts = _postService.GetPostsByForumId(id);
 
-            var postListings = 
+            var postListings = posts.Select(post => new PostListingModel {
+                Id = post.Id,
+                AuthorId = post.User.Id,
+                AuthorRating = post.User.Rating,
+                Title = post.Title,
+                DatePosted = post.Created.ToString(),
+                RepliesCount = post.Replies.Count(),
+                Forum = BuildForumListing(post)
+            });
 
+            return View();
+
+        }
+
+        private ForumListingModel BuildForumListing(Post post)
+        {
+            var forum = post.Forum;
+
+            return new ForumListingModel
+            {
+                Id = forum.Id,
+                Name = forum.Title,
+                Description = forum.Description,
+                ForumImageUrl = forum.ImageUrl
+            };
         }
     }
 }
