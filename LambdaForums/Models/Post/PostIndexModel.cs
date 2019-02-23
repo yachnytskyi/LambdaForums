@@ -1,5 +1,4 @@
-﻿using LambdaForums.Models.Reply;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace LambdaForums.Models
