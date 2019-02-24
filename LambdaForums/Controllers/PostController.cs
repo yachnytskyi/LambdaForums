@@ -43,7 +43,9 @@ namespace LambdaForums.Controllers
                 AuthorRating = post.User.Rating,
                 Created = post.Created,
                 PostContent = post.Content,
-                Replies = replies
+                Replies = replies,
+                ForumId = post.Forum.Id,
+                ForumName = post.Forum.Title
             };
 
             return View(model);
