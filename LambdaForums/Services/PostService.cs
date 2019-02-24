@@ -41,7 +41,10 @@ namespace LambdaForums.Services
 
         public IEnumerable<Post> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Posts
+                .Include(post => post.User)
+                .Include(post => post.Replies).ThenInclude(reply => reply.User)
+                .Include(post => post.Forum);
         }
 
         public IPost GetById(int id)
@@ -52,6 +55,11 @@ namespace LambdaForums.Services
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Post> GetLatestPosts(int n)
+        {
+            return GetAll().OrderByDescending(post => post.Created).Take(n);
         }
 
         public IEnumerable<Post> GetPostsByForumId(int id)
