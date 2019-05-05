@@ -17,14 +17,14 @@ Data/
 Extensions/
 Models/
 Properties/   
-Services/
-Views/
+Services/  
+Views/  
 wwwroot/
-Program.cs
-Startup.cs
-appsettings.Development.json
-appsettings.json
-LambdaForums.csproj  
+Program.cs  
+Startup.cs  
+appsettings.Development.json  
+appsettings.json  
+LambdaForums.csproj    
 BundleConfig.json
 
 REQUIREMENTS
