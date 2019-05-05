@@ -19,7 +19,7 @@ Models/
 Properties/   
 Services/  
 Views/  
-wwwroot/
+wwwroot/    
 Program.cs  
 Startup.cs  
 appsettings.Development.json  
