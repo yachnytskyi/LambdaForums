@@ -16,7 +16,7 @@
             <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
                 <strong>@Model.AuthorName</strong>
             </a> (<span class="postAuthorRating">@Model.AuthorRating</span>) <br />
-            <span class="postDate">@Model.</span>
+            <span class="postDate">@Model.Created</span>
             @if (@Model.isAuthorAdmin)
             {
                 <span class="isAdmin smaller">Admin</span>

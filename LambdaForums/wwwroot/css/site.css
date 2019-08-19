@@ -1,7 +1,7 @@
 ﻿body {
     padding: 50px 0 20px 0;
     background-color: #EEE;
-    background-image: url("/images/theme/mg.jpg");
+    background-image: white;
     background-size: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -31,7 +31,7 @@
 }
 
 .sectionHeading{
-    color: white;
+    color: black;
     font-size: 1.3em;
     font-family: 'Roboto';
     padding: 16px 0 16px 0;
@@ -86,9 +86,9 @@
 .homeSearch{
     width: 100%;
     margin-top: 8px;
-    background: #999;
+    background: white;
     padding: 8px;
-    border: 0px;
+    border: 2px solid #000;
     height: 2.3em;
     font-family: 'Roboto Mono';
     font-weight: bold;
