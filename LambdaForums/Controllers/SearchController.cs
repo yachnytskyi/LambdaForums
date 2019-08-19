@@ -13,39 +13,46 @@ namespace LambdaForums.Controllers
     {
         private readonly IPost _postService;
 
-        protected SearchController(IPost postService)
+        public SearchController(IPost postService)
         {
             _postService = postService;
         }
+
         public IActionResult Results(string searchQuery)
         {
-            var posts = _postService.GetFilteredPosts(searchQuery);
-            var areNoResults = (!string.IsNullOrEmpty(searchQuery) && !posts.Any());
+            var posts = _postService.GetFilteredPosts(searchQuery).ToList();
+            var noResults = (!string.IsNullOrEmpty(searchQuery) && !posts.Any());
 
             var postListings = posts.Select(post => new PostListingModel
             {
                 Id = post.Id,
-                AuthorId = post.User.Id,
+                Forum = BuildForumListing(post),
                 AuthorName = post.User.UserName,
+                AuthorId = post.User.Id,
                 AuthorRating = post.User.Rating,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
-                RepliesCount = post.Replies.Count(),
-                Forum = BuildForumListing(post)
-            });
+                RepliesCount = post.Replies.Count()
+            }).OrderByDescending(post => post.DatePosted);
 
             var model = new SearchResultModel
             {
+                EmptySearchResults = noResults,
                 Posts = postListings,
                 SearchQuery = searchQuery,
-                EmptySearchResults = areNoResults
             };
+
+            return View(model);
         }
 
-        private ForumListingModel BuildForumListing(Post post)
+        [HttpPost]
+        public IActionResult Search(string searchQuery)
         {
-            var forum = post.Forum;
+            return RedirectToAction("Results", new { searchQuery });
+        }
 
+        private static ForumListingModel BuildForumListing(Forum forum)
+        {
             return new ForumListingModel
             {
                 Id = forum.Id,
@@ -55,10 +62,10 @@ namespace LambdaForums.Controllers
             };
         }
 
-        [HttpPost]
-        public IActionResult Search(string searchQuery)
+        private static ForumListingModel BuildForumListing(Post post)
         {
-            return RedirectToAction("Results", new { searchQuery });
+            var forum = post.Forum;
+            return BuildForumListing(forum);
         }
     }
 }
