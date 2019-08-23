@@ -14,6 +14,7 @@ namespace LambdaForums.Models
         public string UserRating { get; set; }
         public string ProfileImageUrl { get; set; }
         public bool IsAdmin { get; set; }
+        public bool IsActive { get; set; }
 
         public DateTime MemberSince { get; set; }
         public IFormFile ImageUpload { get; set; }
