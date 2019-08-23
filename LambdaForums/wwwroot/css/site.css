@@ -281,3 +281,10 @@
     font-family: 'Roboto';
     font-size: 1.7em;
 }
+
+#userProfileImage {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #ddd;
+}

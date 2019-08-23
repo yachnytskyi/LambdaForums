@@ -12,7 +12,9 @@
 
     <div class="row" id="postIndexContent">
         <div class="col-md-3 postAuthorContainer">
-            <div class="postAuthorImage" style="background-image: url(@Model.AuthorImageUrl); background-size: 100%;"></div>
+            <div class="postAuthorImage">
+                <img src="@Url.Content(Model.AuthorImageUrl)" width="70px" height="70px"/>
+            </div>
             <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
                 <strong>@Model.AuthorName</strong>
             </a> (<span class="postAuthorRating">@Model.AuthorRating</span>) <br />
@@ -42,7 +44,12 @@
         {
             <div class="row replyContent">
                 <div class="col-md-3 replyAuthorContainer">
-                    <div class="postAuthorImage" style="background-image: url(@reply.AuthorImageUrl); background-size: 100%;"></div>
+                    
+
+                    <div class="postAuthorImage">
+                        <img src="@Url.Content(Model.AuthorImageUrl)"/>
+                    </div>
+
                     <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
                         <strong>@reply.AuthorName</strong>
                     </a> (<span class="postAuthorRating">@reply.AuthorRating</span>) <br />
