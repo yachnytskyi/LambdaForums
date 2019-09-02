@@ -288,3 +288,34 @@
     height: 200px;
     background-color: #ddd;
 }
+
+.userProfilePic{
+    height: 140px;
+    width: 140px;
+}
+
+.replyContent {
+    display: table;
+    background-color: #fff;
+    border-bottom: 1px solid #aaa;
+    width: inherit;
+}
+
+#postReplyRow {
+    background-color: #fff;
+    padding: 8px;
+}
+
+.replyContentContainer, .replyAuthorContainer {
+    display: table-cell;
+    padding: 12px;
+}
+
+#replyDivider {
+    height: 2px;
+    margin-bottom: 12px;
+}
+
+.smaller {
+    font-size: 0.8 em;
+}

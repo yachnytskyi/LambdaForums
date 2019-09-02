@@ -7,6 +7,6 @@ namespace LambdaForums.Models
 {
     public class ProfileListModel
     {
-        public IEnumerable<ProfileModel> ProfileModels { get; set; }
+        public IEnumerable<ProfileModel> Profiles { get; set; }
     }
 }
