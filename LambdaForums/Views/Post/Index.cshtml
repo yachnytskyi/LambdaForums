@@ -46,9 +46,9 @@
                 <div class="col-md-3 replyAuthorContainer">
                     
 
-                    <div class="postAuthorImage">
-                        <img src="@Url.Content(Model.AuthorImageUrl)"/>
-                    </div>
+                   <div class="postAuthorImage">
+                <img src="@Url.Content(reply.AuthorImageUrl)" width="70px" height="70px"/>
+            </div>
 
                     <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
                         <strong>@reply.AuthorName</strong>

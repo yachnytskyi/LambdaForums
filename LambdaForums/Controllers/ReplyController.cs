@@ -62,6 +62,7 @@ namespace LambdaForums.Controllers
             var reply = BuildReply(model, user);
 
             await _postService.AddReply(reply);
+            await _userService.UpdateUserRating(userId, typeof(PostReply));
 
             return RedirectToAction("Index", "Post", new { id = model.PostId });
         }
