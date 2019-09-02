@@ -118,9 +118,9 @@ namespace LambdaForums.Controllers
         private CloudBlockBlob UploadForumImage(IFormFile file)
         {
             var connectionString = _configuration.GetConnectionString("AzureStorageAccount");
-            var container = _uploadService.GetBlobContainer(connectionString);
-            var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
-            var filename = contentDisposition.FileName.Trim('"');
+            var container = _uploadService.GetBlobContainer(connectionString, "forum-images");
+            var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
+            var filename = Path.Combine(parsedContentDisposition.FileName.Trim('"'));
             var blockBlob = container.GetBlockBlobReference(filename);
             blockBlob.UploadFromStreamAsync(file.OpenReadStream());
 
