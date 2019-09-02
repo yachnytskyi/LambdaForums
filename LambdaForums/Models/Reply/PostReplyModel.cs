@@ -22,5 +22,8 @@ namespace LambdaForums.Models
         public string ForumImageUrl { get; set; }
         public int ForumId { get; set; }
 
+        public bool isAuthorAdmin;
+
+
     }
 }

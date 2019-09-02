@@ -63,7 +63,7 @@ namespace LambdaForums.Controllers
 
             await _postService.AddReply(reply);
 
-            return RedirectToAction("Index", "Post," new { id = model.PostId });
+            return RedirectToAction("Index", "Post", new { id = model.PostId });
         }
 
         private PostReply BuildReply(PostReplyModel model, ApplicationUser user)
