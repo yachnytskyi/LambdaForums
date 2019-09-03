@@ -65,6 +65,7 @@ namespace LambdaForums.Services
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
         {
             var query = searchQuery.ToLower();
+            var normalized = searchQuery.ToLower();
 
             return _context.Posts
                 .Include(post => post.Forum)
