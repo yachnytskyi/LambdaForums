@@ -319,3 +319,12 @@
 .smaller {
     font-size: 0.8 em;
 }
+
+.hasRecentPost {
+    padding: 2px;
+    background-color: #fe552f;
+    color: #fff;
+    text-align: center;
+    border-radius: 1px;
+    width: 30px;
+}
