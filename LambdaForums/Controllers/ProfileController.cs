@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using LambdaForums.Data.Interfaces;
 using LambdaForums.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace LambdaForums.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -65,6 +67,7 @@ namespace LambdaForums.Controllers
             return RedirectToAction("Detail", "Profile", new { id = userId });
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             var profiles = _userService.GetAll()

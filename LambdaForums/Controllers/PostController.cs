@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LambdaForums.Data.Interfaces;
 using LambdaForums.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -57,6 +58,7 @@ namespace LambdaForums.Controllers
             return View(model);
         }
 
+        [Authorize]
         public IActionResult Create(int id)
         {
             // Note id is Forum.Id
@@ -74,6 +76,7 @@ namespace LambdaForums.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddPost(NewPostModel model)
         {

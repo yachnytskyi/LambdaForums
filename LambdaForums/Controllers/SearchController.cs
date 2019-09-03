@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using LambdaForums.Data.Interfaces;
 using LambdaForums.Models;
 using LambdaForums.Models.Search;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LambdaForums.Controllers
-{
+{ 
+    [Authorize]
     public class SearchController : Controller
     {
         private readonly IPost _postService;

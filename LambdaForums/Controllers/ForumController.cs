@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using LambdaForums.Data.Interfaces;
 using LambdaForums.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace LambdaForums.Controllers
 {
+    [Authorize]
     public class ForumController : Controller
     {
         private readonly IForum _forumService;
@@ -90,12 +92,14 @@ namespace LambdaForums.Controllers
             return RedirectToAction("Topic", new { id, searchQuery });
         }
 
+        [Authorize]
         public IActionResult Create()
         {
             var model = new AddForumModel();
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddForum(AddForumModel model)
         {
