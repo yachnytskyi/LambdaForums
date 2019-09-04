@@ -129,7 +129,7 @@ namespace LambdaForums.Controllers
             var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
             var filename = Path.Combine(parsedContentDisposition.FileName.Trim('"'));
             var blockBlob = container.GetBlockBlobReference(filename);
-            blockBlob.UploadFromStreamAsync(file.OpenReadStream());
+            blockBlob.UploadFromStreamAsync(file.OpenReadStream()).Wait();
 
             return blockBlob;
         }

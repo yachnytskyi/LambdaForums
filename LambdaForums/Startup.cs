@@ -48,7 +48,7 @@ namespace LambdaForums
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataSeeder dataSeeder)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -61,7 +61,7 @@ namespace LambdaForums
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            dataSeeder.SeedSuperUser();
+            //dataSeeder.SeedSuperUser();
 
             app.UseStaticFiles();
 

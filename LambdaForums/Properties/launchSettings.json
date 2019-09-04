@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "IIS Express": {
+    "Lambda Forums (Development)": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "https://localhost:44374/",
@@ -16,11 +16,11 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "LambdaForums": {
+    "LambdaForums (Production)": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       },
       "applicationUrl": "http://localhost:54568/"
     }

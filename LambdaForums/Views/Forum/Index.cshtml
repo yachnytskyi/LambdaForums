@@ -17,7 +17,10 @@
                 {
                     <tr>
                         <td>
-                            <div class="forumLogo" style="background-image: url(@forum.ForumImageUrl); background-size:100%"></div>
+                            <div class="forumLogo">
+                                <img src="@Url.Content(forum.ForumImageUrl)" width="140px" height="140px" />
+                            </div>
+
                             <div class="forumData">
                                 <div class="forumTitle">
                                     <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">@forum.Name</a>
